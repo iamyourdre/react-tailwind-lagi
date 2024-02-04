@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 import styles from "../style";
 import {logo, jp, id} from '../assets';
@@ -7,17 +8,9 @@ import { FaRegUser } from "react-icons/fa6";
 import { HiMiniBars3BottomRight } from "react-icons/hi2";
 import { HiX } from "react-icons/hi";
 
-import { useNavigation } from "../contexts/ContextProvider";
 
 const Navbar1 = () => {
   const [toggle, setToggle] = useState(false);
-  
-  const { activeNavId, setActiveNav } = useNavigation();
-
-  const handleNavClick = (navId) => {
-    setActiveNav(navId);
-    console.log(navId)
-  };
 
   return (
     <div className={`${styles.paddingX} ${styles.flexCenter} bg-jkt-light z-50`}>
@@ -28,13 +21,28 @@ const Navbar1 = () => {
             <p>JKT48</p>
             <p>Official Website</p>
           </article> */}
-          
-          <ul className="list-none md:flex hidden justify-end items-center flex-1 h-full">
-            {navLinks.map((nav, index)=>(
-              <li key={nav.id} className={`transition duration-300 ease-in-out font-poppins font-normal cursor-pointer text-[16px] px-5 ${index === navLinks.length - 1 ? 'mr-10':''} text-jkt-dark flex h-full ${index === activeNavId ? 'border-b-2 border-jkt-red':''}`} onClick={() => handleNavClick(index)} >
+
+            {/* {navLinks.map((nav, index)=>(
+              <li key={nav.id} className={`transition duration-300 ease-in-out font-poppins font-normal cursor-pointer text-[16px] px-5 ${index === navLinks.length - 1 ? 'mr-10':''} text-jkt-dark flex h-full ${index === activeNavId ? 'border-b-2 border-jkt-red':''}`} >
                 <a href={`#${nav.id}`} className="my-auto">
                   {nav.title}
                 </a>
+              </li>
+            ))} */}
+          
+          <ul className="list-none md:flex hidden justify-end items-center flex-1 h-full">
+            {navLinks.map((nav, index)=>(
+              <li key={nav.id} className="h-full">
+                <NavLink to={nav.id} className={
+                  ({ isActive }) =>
+                  isActive ? (`border-b-2 border-jkt-red transition duration-300 ease-in-out font-poppins font-normal cursor-pointer text-[16px] px-5 text-jkt-dark flex h-full ${index === navLinks.length - 1 ? 'mr-10':''}`)
+                  :
+                  (`transition duration-300 ease-in-out font-poppins font-normal cursor-pointer text-[16px] px-5 text-jkt-dark flex h-full
+                  ${index === navLinks.length - 1 ? 'mr-10':''}`) }>
+                  <a href={`#${nav.id}`} className="my-auto">
+                    {nav.title}
+                  </a>
+                </NavLink>
               </li>
             ))}
             <li className="font-poppins font-normal cursor-pointer">
@@ -46,7 +54,7 @@ const Navbar1 = () => {
 
           <div className="md:hidden flex justify-end items-center">
             {toggle ? (
-              <HiX  alt="close"
+              <HiX alt="close"
               className="w-[33px] h-[33px] object-contain text-jkt-dark"
               onClick={() => setToggle((prev) => !prev)}/>
             ) : (
