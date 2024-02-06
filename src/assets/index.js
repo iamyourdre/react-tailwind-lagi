@@ -9,5 +9,5 @@ export {
   menu,
   close,
   jp,
-  id
+  id,
 };

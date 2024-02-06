@@ -1,16 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react';
+import styles from '../style';
 
-import styles from "../style";
-import {navLinks} from '../constants';
+import Carousel from './Carousel';
 
-const Hero1 = () => {
+const Hero = () => {
+
   return (
-    <div className={`bg-primary ${styles.flexStart}`}>
-      <div className={`${styles.boxWidth}`}>
-        <Hero />
-      </div>
-    </div>
-  )
-}
+    <>
+      <Carousel />
+    </>
+  );
+};
 
-export default Hero1
+export default Hero;

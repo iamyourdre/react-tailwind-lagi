@@ -1,6 +1,6 @@
-import Navbar1 from "./Navbar";
-import Hero1 from "./Hero";
+import Navbar from "./Navbar";
+import Hero from "./Hero";
 
 export {
-  Navbar1, Hero1
+  Navbar, Hero
 };

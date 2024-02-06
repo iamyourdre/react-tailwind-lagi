@@ -1,5 +1,9 @@
 export const navLinks = [
   {
+    id: "assets/banner1.jpg",
+    title: "Home",
+  },
+  {
     id: "news",
     title: "News",
   },

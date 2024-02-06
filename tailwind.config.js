@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,jsx}"],
+  content: [
+    "./index.html", "./src/**/*.{js,jsx}",
+    'node_modules/preline/dist/*.js',
+  ],
   mode: "jit",
   theme: {
     extend: {
@@ -24,5 +27,7 @@ export default {
       xl: "1700px",
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [
+    require('preline/plugin'),
+  ],
 }
